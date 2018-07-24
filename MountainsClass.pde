@@ -36,15 +36,35 @@ public class Mountains {
   }
   
   public void drawHorizon(){
+    fill(this.fillColor.x, this.fillColor.y, this.fillColor.z);
+    noStroke();
     beginShape();
     vertex(0, 800);
     for(int i=0; i<(this.granularity+1); i++){
-      fill(this.fillColor.x, this.fillColor.y, this.fillColor.z);
-      noStroke();
       Vector2D point = horizon[i];
+      //fill(this.fillColor.x + i/3, this.fillColor.y + i/3, this.fillColor.z + i/3);
       vertex(point.x, point.y);
     }
     vertex(1200, 800);
+    vertex(600, 800);
+    endShape(CLOSE);
+  }
+  
+  public void drawGradient(){
+    fill(255);
+    beginShape();
+    for(int i=0; i<20; i++){
+      int j = i * 40;
+      fill(255, 60-i*3);
+      vertex(0, j);
+    }
+    vertex(0, 800);
+    for(int i=0; i<20; i++){
+      int j = 800 - i * 40;
+      fill(255, i*3);
+      vertex(1200, j);
+    }
+    vertex(1200, 0);
     endShape(CLOSE);
   }
   
